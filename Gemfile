@@ -28,6 +28,12 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Use Capistrano for deployment
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4', group: :development
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'capistrano3-puma' , group: :development
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
