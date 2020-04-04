@@ -1,0 +1,9 @@
+.col-6.col-sm-2
+  .card[candidate]
+    = image_tag candidate.thumb, class: 'card-img-top'
+    = candidate.no
+    = candidate.name
+    = candidate.cname
+    = candidate.district.province.name
+    = candidate.district.name
+    = candidate.party.name
