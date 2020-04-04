@@ -1,0 +1,15 @@
+%section.p-5
+  .container
+    .bg-danger.p-3.text-white
+      = form_with url: candidates_path, method: :get do |f|
+        .mb-3
+          %h5 시도
+          = f.select :pid, Province.all.collect{ |p| [p.name, p.id]}, { selected: @province.id }, { onchange: "this.form.submit()", class: "form-control" }
+
+        .my-3
+          %h5 선거구
+          = f.select :did, @province.districts.collect{ |d| [d.name, d.id]}, { selected: @district.id }, { onchange: "this.form.submit()", class: "form-control" }
+
+%section.p-5
+  .container
+    %h2= @district.name

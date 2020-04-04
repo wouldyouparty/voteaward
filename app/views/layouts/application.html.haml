@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
+    %title 투표대잔치 2020
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_pack_tag 'application'
+    = stylesheet_link_tag    'application', media: 'all'
+    %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/d1995cff7d.js"}
+  %body
+    %section.jumbotron.bg-success.text-white.rounded-0
+      .container
+        .py-5.text-center
+          = image_tag "logo.png"
+          %h2.mt-4
+            %span.font-weight-bold 투표대잔치
+            %span.font-weight-light 2020
+          %p.p-2.lead 투표가 재밌어집니다
+
+    %main
+      = yield
