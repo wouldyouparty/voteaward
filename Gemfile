@@ -12,6 +12,14 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise'
 gem 'cancancan'
 
+# i18n
+gem 'http_accept_language'
+
+# tools
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'ancestry'
+gem "scoped_search"
+
 # front
 gem 'sass-rails', '>= 6'
 gem 'haml-rails', '~> 1.0'

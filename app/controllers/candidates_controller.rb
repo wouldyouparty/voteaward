@@ -1,16 +1,23 @@
 class CandidatesController < ApplicationController
   def index
-    if params[:did]
+    if params[:did].present?
       @district = District.find(params[:did])
       @province = @district.province
-    elsif params[:pid]
+      @candidates = @district.candidates
+    elsif params[:pid].present?
       @province = Province.find(params[:pid])
       @district = @province.districts.first
+      @candidates = @district.candidates
+    elsif params[:name].present?
+      @candidates = Candidate.search_for(params[:name])
     else
       @province = Province.first
       @district = @province.districts.first
+      @candidates = @district.candidates
     end
+  end
 
-    @candidates = @district.candidates
+  def show
+    @candidate = Candidate.find(params[:id])
   end
 end
