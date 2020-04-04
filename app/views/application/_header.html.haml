@@ -1,0 +1,27 @@
+%header
+  %nav.navbar.fixed-top.navbar-dark.bg-primary.justify-content-start
+    %button.navbar-toggler.p-0.border-0.mr-2{"data-toggle" => "offcanvas", :type => "button"}
+      %span.navbar-toggler-icon
+
+    .navbar-collapse.offcanvas-collapse
+      %ul.navbar-nav
+
+        %li.nav-item.mt-4
+          %small.text-light
+            %i.fas.fa-flag
+        %li.nav-item
+          = link_to '후보 검색', candidates_path, class: 'nav-link'
+
+        %li.nav-item.mt-4
+          %small.text-light
+            %i.far.fa-user
+        - if user_signed_in?
+          %li.nav-item
+            .nav-link
+              = current_user.name
+              (#{current_user.email})
+          %li.nav-item= link_to t("link.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link"
+        - else
+          %li.nav-item= link_to t("link.sign_in"), new_user_session_path, class: "nav-link"
+
+    = link_to "투표대잔치 2020", root_path, class: "navbar-brand"

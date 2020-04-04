@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.2)
     acts-as-taggable-on (6.5.0)
       activerecord (>= 5.0, < 6.1)
+    acts_as_votable (0.12.1)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ancestry (3.0.7)
@@ -246,6 +247,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
+  acts_as_votable
   ancestry
   bootsnap (>= 1.4.2)
   byebug

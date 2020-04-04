@@ -1,0 +1,91 @@
+%section.py-4.bg-light
+  .container
+    .d-flex.justify-content-start
+      = image_tag @candidate.thumb, height: 160, class: 'mr-3'
+
+      %div
+        %h3.font-weight-bold
+          = @candidate.name
+          %small{ style: "font-size:0.6em;" }= @candidate.party.name
+
+        .my-2
+          = link_to candidates_path(did: @candidate.district) do
+            %i.fa.fa-map-marker
+            = @candidate.district.province.name
+            = @candidate.district.name
+
+        .comments.my-3
+          = link_to '#', class: "btn btn-lg btn-danger btn-block text-white" do
+            %i.fas.fa-comment-alt-exclamation
+            100
+
+        .votes.mt-2
+          %span.mr-2.text-primary
+            %i.far.fa-smile
+            100
+
+          %span.text-danger
+            %i.far.fa-angry
+            100
+
+
+%section.tab.py-3.border-bottom
+  .container
+    .d-flex.justify-content-start
+      .nav.nav-pills.nav-fill
+        .nav-item
+          = link_to candidate_path(@candidate), class: class_string({"nav-link" => true, active: params[:page].nil?}) do
+            후보 정보
+        .nav-item
+          = link_to candidate_path(@candidate, page: "comments"), class: class_string({"nav-link" => true, active: params[:page] == "comments"}) do
+            후보의 말말말
+        .nav-item
+          = link_to candidate_path(@candidate, page: "votes"), class: class_string({"nav-link" => true, active: params[:page] == "votes"}) do
+            좋아요/화나요
+
+%section.py-5
+  .container
+    %table.table.table-bordered.bg-white
+      %tr
+        %th.text-nowrap 한문
+        %td= @candidate.cname
+      %tr
+        %th.text-nowrap 성별
+        %td= @candidate.gender
+      %tr
+        %th.text-nowrap 나이
+        %td= @candidate.age
+      %tr
+        %th.text-nowrap 주소
+        %td= @candidate.address
+      %tr
+        %th.text-nowrap 직업
+        %td= @candidate.job
+      %tr
+        %th.text-nowrap 학력
+        %td= @candidate.education
+      %tr
+        %th.text-nowrap 경력
+        %td
+          = raw JSON.parse(@candidate.career).join("<br>")
+      %tr
+        %th.text-nowrap 재산신고액
+        %td #{number_with_delimiter(@candidate.property.to_i*1000)}원
+      %tr
+        %th 병역신고사항(본인)
+        %td= @candidate.military
+      %tr
+        %th.text-nowrap 납부액
+        %td #{number_with_delimiter(@candidate.tax)}원
+      %tr
+        %th.text-nowrap 최근5년간체납액
+        %td #{number_with_delimiter(@candidate.tax_unpaid_5yrs)}원
+      %tr
+        %th.text-nowrap 현체납액
+        %td #{number_with_delimiter(@candidate.tax_unpaid_current)}원
+      %tr
+        %th 전과기록유무(건수)
+        %td #{@candidate.crime}회
+      %tr
+        %th.text-nowrap 입후보횟수
+        %td #{@candidate.candidate_count}회

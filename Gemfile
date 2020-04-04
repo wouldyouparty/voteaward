@@ -19,6 +19,7 @@ gem 'http_accept_language'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'ancestry'
 gem "scoped_search"
+gem 'acts_as_votable'
 
 # front
 gem 'sass-rails', '>= 6'

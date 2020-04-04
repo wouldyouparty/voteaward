@@ -1,0 +1,17 @@
+%section.py-5
+  .container
+    .row.justify-content-md-center
+      .col-sm-5
+        %h3 로그인
+
+        .border.p-4
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .form-group
+              = f.label :email
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+            .form-group
+              = f.label :password
+              = f.password_field :password, autocomplete: "current-password", class: "form-control"
+            .form-group
+              = f.submit "로그인", class: "btn btn-primary btn-block"
+          = render "devise/shared/links"

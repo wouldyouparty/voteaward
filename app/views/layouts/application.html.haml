@@ -11,14 +11,6 @@
     = stylesheet_link_tag 'application', media: 'all'
     %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/d1995cff7d.js"}
   %body
-    %section.jumbotron.bg-success.text-white.rounded-0.m-0
-      .container
-        .py-5.text-center
-          = image_tag "logo.png"
-          %h2.mt-4
-            %span.font-weight-bold 투표대잔치
-            %span.font-weight-light 2020
-          %p.p-2.lead 투표는 재밌어야죠!
-
+    = render "header"
     %main
       = yield
