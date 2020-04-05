@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_020742) do
+ActiveRecord::Schema.define(version: 2020_04_05_124906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "awards", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "candidates", force: :cascade do |t|
     t.bigint "district_id", null: false
@@ -40,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_020742) do
     t.integer "candidate_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "awards_count", default: 0
     t.index ["district_id"], name: "index_candidates_on_district_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
   end

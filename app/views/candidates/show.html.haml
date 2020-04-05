@@ -1,7 +1,7 @@
 %section.py-4.bg-light
   .container
     .d-flex.justify-content-start
-      = image_tag @candidate.thumb, height: 160, class: 'mr-3'
+      = image_tag @candidate.thumb, height: 150, class: 'mr-3'
 
       %div
         %h3.font-weight-bold
@@ -14,10 +14,14 @@
             = @candidate.district.province.name
             = @candidate.district.name
 
-        .comments.my-3
-          = link_to candidate_path(@candidate), class: "btn btn-lg btn-danger btn-block text-white" do
+        .my-3
+          = link_to candidate_path(@candidate), class: "btn btn-lg btn-danger text-white mr-2" do
             %i.fas.fa-comment-alt-exclamation
             = number_with_delimiter(@candidate.trails.count)
+
+          = link_to candidate_path(@candidate), class: "btn btn-lg btn-primary text-white" do
+            %i.fas.fa-crown
+            = number_with_delimiter(@candidate.awards_count)
 
         .votes.mt-2
           %span.mr-2.text-primary

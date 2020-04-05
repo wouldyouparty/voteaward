@@ -1,13 +1,28 @@
-.col-6.col-sm-2.mb-4
+.col-6.col-md-4.col-xl-2.mb-4
   .card[candidate]
     = link_to candidate do
       = image_tag candidate.thumb, class: 'card-img-top'
     .card-body
-      .card-title
-        = candidate.no
-        = candidate.name
-      = candidate.cname
+      %h5.card-title
+        %strong= candidate.name
+        %br
+        %small= candidate.party.name
       - if @district.nil?
         = candidate.district.province.name
         = candidate.district.name
-      = candidate.party.name
+    .card-footer
+      %span.mr-1.text-primary
+        %i.far.fa-comment-alt-exclamation
+          = number_with_delimiter(candidate.trails.count)
+
+      %span.mr-1.text-success
+        %i.far.fa-smile
+        = number_with_delimiter(candidate.likes_count)
+
+      %span.mr-1.text-danger
+        %i.far.fa-angry
+        = number_with_delimiter(candidate.dislikes_count)
+
+      %span.text-primary
+        %i.far.fa-crown
+          = number_with_delimiter(candidate.awards_count)
