@@ -9,4 +9,8 @@ class User < ApplicationRecord
   acts_as_voter
 
   validates :name, presence: true
+
+  def admin?
+    false
+  end
 end

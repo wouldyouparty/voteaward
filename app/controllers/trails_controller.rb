@@ -1,4 +1,6 @@
 class TrailsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @trails = Trail.all
   end
@@ -12,6 +14,10 @@ class TrailsController < ApplicationController
   def update
     @trail = current_user.trails.find(params[:id])
     @trail.update(trail_params)
+  end
+
+  def destroy
+    @trail.destroy
   end
 
   def vote

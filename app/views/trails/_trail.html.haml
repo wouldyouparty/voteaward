@@ -4,8 +4,9 @@
       .user.text-muted
         %span.font-weight-bold= trail.user.name
         = l trail.created_at.to_date
-        - if current_user == trail.user
+        - if can? :manage, trail
           = link_to "수정", "#", data: {toggle: "modal", target: "#edit-trail-modal-#{trail.id}"}, class: "text-danger"
+          = link_to "삭제", trail, method: :delete, data: {confirm: "삭제하시겠습니까?"}, remote: true, class: "text-danger"
 
           .modal.fade{id: "edit-trail-modal-#{trail.id}", role: "dialog", aria: { hidden: true}}
             .modal-dialog{role: "document"}
