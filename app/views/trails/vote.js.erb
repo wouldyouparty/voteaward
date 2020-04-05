@@ -1,0 +1,1 @@
+$(".btn-<%= params[:vote] %>[data-trail-id=<%= @trail.id %>] .count").text(<%= @trail.send("#{params[:vote]}s_count") %>);

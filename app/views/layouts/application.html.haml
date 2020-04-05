@@ -13,4 +13,18 @@
   %body
     = render "header"
     %main
+      - if current_page? root_url
+        %section.jumbotron.bg-primary.text-white.rounded-0.m-0.vh-75
+          .container
+            .py-5.text-center
+              = image_tag "logo.png"
+              %h2.mt-4
+                %span.font-weight-bold 투표대잔치
+                %span.font-weight-light 2020
+              %p.p-2.lead 투표를 즐기는 색다른 방법
+
+              %p
+                = link_to '후보들의 말잔치', trails_path, class: "btn btn-danger mx-2"
+                = link_to '아니, 이런 인물이!', candidates_path, class: "btn btn-success mx-2"
+
       = yield

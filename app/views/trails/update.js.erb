@@ -1,0 +1,9 @@
+<% if @trail.errors.any? %>
+  var $errors = $("#new_trail_modal .errors");
+  $errors.empty();
+  <% @trail.errors.full_messages.each do |msg| %>
+    $("<li class='text-danger'><%= msg %></li>").appendTo($errors);
+  <% end %>
+<% else %>
+  document.location.reload();
+<% end %>

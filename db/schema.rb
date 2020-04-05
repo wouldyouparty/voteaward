@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_112533) do
+ActiveRecord::Schema.define(version: 2020_04_05_020742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,20 @@ ActiveRecord::Schema.define(version: 2020_04_04_112533) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "trails", force: :cascade do |t|
+    t.text "body"
+    t.string "url"
+    t.bigint "user_id", null: false
+    t.bigint "candidate_id", null: false
+    t.boolean "verfied", default: false
+    t.integer "likes_count", default: 0
+    t.integer "dislikes_count", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_trails_on_candidate_id"
+    t.index ["user_id"], name: "index_trails_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,4 +128,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_112533) do
   add_foreign_key "candidates", "districts"
   add_foreign_key "candidates", "parties"
   add_foreign_key "districts", "provinces"
+  add_foreign_key "trails", "candidates"
+  add_foreign_key "trails", "users"
 end

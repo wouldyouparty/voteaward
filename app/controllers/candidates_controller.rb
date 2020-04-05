@@ -19,5 +19,6 @@ class CandidatesController < ApplicationController
 
   def show
     @candidate = Candidate.find(params[:id])
+    @page = params[:page] || "info"
   end
 end

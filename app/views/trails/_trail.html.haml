@@ -1,0 +1,71 @@
+.trail-card.bg-white.mb-3.p-3.rounded.shadow[trail]
+  .mb-2
+    .d-flex.justify-content-between
+      .user.text-muted
+        %span.font-weight-bold= trail.user.name
+        = l trail.created_at.to_date
+        - if current_user == trail.user
+          = link_to "수정", "#", data: {toggle: "modal", target: "#edit-trail-modal-#{trail.id}"}, class: "text-danger"
+
+          .modal.fade{id: "edit-trail-modal-#{trail.id}", role: "dialog", aria: { hidden: true}}
+            .modal-dialog{role: "document"}
+              .modal-content
+                = form_with model: trail do |f|
+                  = f.hidden_field :candidate_id, value: @candidate.id
+                  .modal-header
+                    %h5.modal-title
+                      수정
+                    %button.close{type: "button", data: {dismiss: "modal"}, aria: { label: "Close"}}
+                      %span{ aria: {hidden: true}} &times;
+                  .modal-body
+                    %ul.errors
+                    .form-group
+                      = f.label "내용"
+                      = f.text_area :body, class: "form-control", rows: 10
+                    .form-group
+                      = f.label "출처(웹주소)"
+                      = f.text_field :url, class: "form-control"
+                  .modal-footer
+                    %button.btn.btn-secondary{type: "button", data: {dismiss: "modal"}} 닫기
+                    = f.submit "저장", class: "btn btn-primary", data: { "disable-with": "저장중..." }
+
+      %div
+        - if trail.verfied?
+          %span.text-success
+            %i.fa.fa-check
+            검증완료
+        - else
+          %span.text-danger
+            %i.fa.fa-search
+            검증중
+  .my-2
+    - if local_assigns[:show_candidate]
+      %h5
+        %span.font-weight-bold
+          = link_to trail.candidate.name, trail.candidate
+        %small
+          = link_to trail.candidate.party.name, candidates_path(party_id: trail.candidate.party)
+        %small
+          = link_to candidates_path(did: trail.candidate.district) do
+            %i.fa.fa-map-marker
+            = trail.candidate.district.province.name
+            = trail.candidate.district.name
+
+    = simple_format(trail.body)
+
+  - if trail.url.present?
+    .my-2
+      %span.text-muted 출처
+      %span.overflow-hidden
+        = link_to trail.url, trail.url, target: "_blank"
+
+  .mt-4
+    .d-flex.justify-content-start
+      = button_to vote_trail_path(trail, vote: "like"), data: { trail_id: trail.id }, remote: true, class: "btn btn-outline-primary btn-like mr-2" do
+        %i.far.fa-smile
+        좋아요
+        %strong.count= trail.likes_count
+      = button_to vote_trail_path(trail, vote: "dislike"), data: { trail_id: trail.id }, remote: true, class: "btn btn-outline-danger btn-dislike mx-2" do
+        %i.far.fa-angry
+        화나요
+        %strong.count= trail.dislikes_count

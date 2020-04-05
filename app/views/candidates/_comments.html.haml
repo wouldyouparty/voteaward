@@ -1,0 +1,34 @@
+%section.py-5
+  .container
+    .d-flex.justify-content-end.pb-3
+      - if user_signed_in?
+        = link_to "추가하기", "#", data: {toggle: "modal", target: "#new_trail_modal"}
+      - else
+        = link_to "추가하기", new_user_session_path
+
+      #new_trail_modal.modal.fade{role: "dialog", aria: { hidden: true}}
+        .modal-dialog{role: "document"}
+          .modal-content
+            = form_with model: Trail.new do |f|
+              = f.hidden_field :candidate_id, value: @candidate.id
+              .modal-header
+                %h5.modal-title
+                  %stron= @candidate.name
+                  = @candidate.party.name
+                  후보에 관해 알려주세요
+                %button.close{type: "button", data: {dismiss: "modal"}, aria: { label: "Close"}}
+                  %span{ aria: {hidden: true}} &times;
+              .modal-body
+                %ul.errors
+                .form-group
+                  = f.label "내용"
+                  = f.text_area :body, class: "form-control", rows: 10
+                .form-group
+                  = f.label "출처(웹주소)"
+                  = f.text_field :url, class: "form-control"
+              .modal-footer
+                %button.btn.btn-secondary{type: "button", data: {dismiss: "modal"}} 닫기
+                = f.submit "저장", class: "btn btn-primary", data: { "disable-with": "저장중..." }
+
+    .py-2
+      = render @candidate.trails

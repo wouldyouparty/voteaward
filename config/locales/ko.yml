@@ -14,6 +14,9 @@ ko:
         name: 닉네임
         password: 비밀번호
         password_confirmation: 비밀번호 확인
+      trail:
+        body: 내용
+        url: 출처
 
   site_name: 투표대잔치 2020
   link:
