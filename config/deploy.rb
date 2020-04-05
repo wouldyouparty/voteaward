@@ -38,3 +38,29 @@ namespace :puma do
     execute "mkdir -p #{shared_dir}/tmp/pids"
   end
 end
+
+namespace :deploy do
+  after :compile_assets, :db_migrate
+  after :finished, :web_restart
+
+  desc 'db setup'
+  task :db_setup do
+    on roles(:web) do
+      execute "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake db:setup"
+    end
+  end
+
+  desc 'db migrate'
+  task :db_migrate do
+    on roles(:web) do
+      execute "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake db:migrate"
+    end
+  end
+
+  desc 'restart nginx web server'
+  task :web_restart do
+    on roles(:web) do
+      execute "sudo service nginx restart"
+    end
+  end
+end
