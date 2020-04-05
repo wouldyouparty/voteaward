@@ -15,7 +15,7 @@
             = @candidate.district.name
 
         .comments.my-3
-          = link_to candidate_path(@candidate, page: "comments"), class: "btn btn-lg btn-danger btn-block text-white" do
+          = link_to candidate_path(@candidate), class: "btn btn-lg btn-danger btn-block text-white" do
             %i.fas.fa-comment-alt-exclamation
             = number_with_delimiter(@candidate.trails.count)
 
@@ -34,10 +34,10 @@
     .d-flex.justify-content-start
       .nav.nav-pills.nav-fill
         .nav-item
-          = link_to candidate_path(@candidate), class: class_string({"nav-link" => true, active: params[:page].nil?}) do
+          = link_to candidate_path(@candidate, page: "info"), class: class_string({"nav-link" => true, active: params[:page] == "info"}) do
             후보 정보
         .nav-item
-          = link_to candidate_path(@candidate, page: "comments"), class: class_string({"nav-link" => true, active: params[:page] == "comments"}) do
+          = link_to candidate_path(@candidate), class: class_string({"nav-link" => true, active: params[:page].nil?}) do
             후보의 말말말
 
 = render @page

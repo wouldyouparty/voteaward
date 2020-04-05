@@ -4,7 +4,7 @@
       - if user_signed_in?
         = link_to "추가하기", "#", data: {toggle: "modal", target: "#new_trail_modal"}
       - else
-        = link_to "추가하기", new_user_session_path
+        = link_to "추가하기", "#", data: {toggle: "modal", target: "#new-user-session-modal"}
 
       #new_trail_modal.modal.fade{role: "dialog", aria: { hidden: true}}
         .modal-dialog{role: "document"}
