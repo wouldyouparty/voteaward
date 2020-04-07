@@ -16,10 +16,14 @@
       = simple_format @award.body
 
     .my-3
+      %h6
+        %strong 대상후보
+        #{@award.candidates.count}명
+
       .row
         - @award.candidates.each do |candidate|
-          .col-6.col-md-4.col-lg-3
-            .d-flex.justify-content-start.align-items-center.bg-light.border
+          .col-6.col-md-4.col-lg-3.mb-1
+            .d-flex.justify-content-start.align-items-center.bg-light
               = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:63px;height:75px"
               .text-muted
                 .mb-1
