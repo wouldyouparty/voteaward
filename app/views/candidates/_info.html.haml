@@ -2,6 +2,13 @@
   .container
     %table.table.table-bordered.bg-white
       %tr
+        %th 정보공개항목
+        %td
+          %strong
+            = link_to "http://info.nec.go.kr/electioninfo/candidate_detail_info.xhtml?electionId=0020200415&huboId=#{@candidate.gid}", target: "_blank" do
+              %i.fa.fa-external-link
+              선거관리위원회 후보정보공개
+      %tr
         %th.text-nowrap 한문
         %td= @candidate.cname
       %tr
