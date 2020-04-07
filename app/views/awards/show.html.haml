@@ -1,0 +1,30 @@
+%section.py-5
+  .container
+    %h3.font-weight-bold
+      %i.far.fa-crown
+      = @award.title
+
+    .my-3.text-muted
+      %span.mr-2
+        = @award.user.name
+        = l @award.created_at.to_date
+      - if can?(:manage, @award)
+        = link_to '수정', edit_award_path(@award)
+        = link_to '삭제', @award, method: :delete, data: {confirm: "정말 삭제하시겠습니까?"}
+
+    .my-3
+      = simple_format @award.body
+
+    .my-3
+      .row
+        - @award.candidates.each do |candidate|
+          .col-6.col-md-4.col-lg-3
+            .d-flex.justify-content-start.align-items-center.bg-light.border
+              = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:63px;height:75px"
+              .text-muted
+                .mb-1
+                  %strong= link_to candidate.name, candidate, class: "stretched-link"
+                  %span= candidate.party.name
+                %div
+                  %i.fa.fa-map-marker
+                  = candidate.district.name

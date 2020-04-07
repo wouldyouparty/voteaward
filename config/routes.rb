@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :trails do
     post :vote, on: :member
   end
+  resources :awards
   root 'candidates#index'
 end

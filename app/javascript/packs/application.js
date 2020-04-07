@@ -19,10 +19,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'select2';
+import 'select2/dist/css/select2.css';
+import 'select2-theme-bootstrap4/dist/select2-bootstrap.css';
 
-
-$(function(){
+window.addEventListener('DOMContentLoaded', () => {
   $('[data-toggle="offcanvas"]').on('click', function () {
     $('.offcanvas-collapse').toggleClass('open');
+  });
+
+  $('[data-js-select2]').select2({
+    theme: 'bootstrap'
   });
 });

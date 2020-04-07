@@ -21,7 +21,7 @@
 
           = link_to candidate_path(@candidate), class: "btn btn-lg btn-primary text-white" do
             %i.fas.fa-crown
-            = number_with_delimiter(@candidate.awards_count)
+            = number_with_delimiter(@candidate.awards.count)
 
         .votes.mt-2
           %span.mr-2.text-primary
@@ -42,6 +42,9 @@
             후보 정보
         .nav-item
           = link_to candidate_path(@candidate), class: class_string({"nav-link" => true, active: params[:page].nil?}) do
-            후보의 말말말
+            후보 팩트체크
+        .nav-item
+          = link_to candidate_path(@candidate, page: "awards"), class: class_string({"nav-link" => true, active: params[:page] == "awards"}) do
+            후보 어워드
 
 = render @page

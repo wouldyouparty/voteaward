@@ -2,6 +2,7 @@ class Candidate < ApplicationRecord
   belongs_to :district
   belongs_to :party
   has_many :trails
+  has_and_belongs_to_many :awards, counter_cache: true
 
   scoped_search on: [:name]
 

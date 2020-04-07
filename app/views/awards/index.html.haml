@@ -1,0 +1,9 @@
+%section.py-5
+  .container
+    .d-flex.justify-content-between
+      %h3.font-weight-bold 후보들의 별별 어워드
+      - if can? :create, Award
+        = link_to '추가하기', new_award_path
+
+    .my-3
+      = render @awards

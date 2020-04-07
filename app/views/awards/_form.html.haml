@@ -1,0 +1,21 @@
+= form_with model: @award, local: true do |f|
+  - if @award.errors.any?
+    .alert.alert-danger
+      %ul
+        - @award.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+
+  .form-group
+    = f.label :body
+    = f.text_area :body, rows: 10, class: "form-control"
+
+  .form-group
+    = f.label :candidates
+    = f.select :candidate_ids, Candidate.all.map{|c| ["#{c.name} (#{c.party.name} #{c.district.name})", c.id]}, {include_blank: true}, {class: "form-control", data: {"js-select2": true}, multiple: true}
+
+  .form-group
+    = f.submit class: "btn btn-outline-primary"

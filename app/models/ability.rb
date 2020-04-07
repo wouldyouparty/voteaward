@@ -7,7 +7,8 @@ class Ability
     can :read, :all
 
     if user.present?
-      can :manage, Trail, user_id: user.id
+      can :create, [Trail, Award]
+      can :manage, [Trail, Award], user_id: user.id
       if user.admin?
         can :manage, :all
       end

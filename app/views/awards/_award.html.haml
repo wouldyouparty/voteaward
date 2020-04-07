@@ -1,0 +1,24 @@
+.card.border-0.shadow.mb-3[award]
+  .card-body
+    %h5.card-title
+      = link_to award do
+        %i.far.fa-crown
+        = award.title
+
+    .card-text.award-candidates
+      %h6
+        %strong 대상후보
+        #{award.candidates.count}명
+
+      .row.no-gutters
+        - award.candidates.each do |candidate|
+          .col-6.col-md-4.col-lg-3.mb-1
+            .d-flex.justify-content-start.align-items-center.bg-light
+              = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:63px;height:75px"
+              .text-muted
+                .mb-1
+                  %strong= link_to candidate.name, candidate, class: "stretched-link"
+                  %span= candidate.party.name
+                %div
+                  %i.fa.fa-map-marker
+                  = candidate.district.name
