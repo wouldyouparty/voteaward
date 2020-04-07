@@ -14,4 +14,8 @@ class Candidate < ApplicationRecord
   def dislikes_count
     trails.sum(:dislikes_count)
   end
+
+  def thumb
+    "candidates/#{gid}.jpg"
+  end
 end
