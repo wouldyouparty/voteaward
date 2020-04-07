@@ -2,5 +2,8 @@
   .container
     %h3.font-weight-bold 후보들의 별별 팩트체크
 
+    %section
+      = render "candidates/search_form"
+
     .my-3
       = render @trails, show_candidate: true

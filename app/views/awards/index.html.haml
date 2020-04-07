@@ -5,5 +5,8 @@
       - if can? :create, Award
         = link_to '추가하기', new_award_path
 
+    %section
+      = render "candidates/search_form"
+
     .my-3
       = render @awards
