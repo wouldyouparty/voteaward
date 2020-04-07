@@ -31,4 +31,8 @@
                 = f.submit "저장", class: "btn btn-primary", data: { "disable-with": "저장중..." }
 
     .py-2
-      = render @candidate.trails
+      - if @candidate.trails.any?
+        = render @candidate.trails
+      - else
+        .border.p-4
+          .text-muted.text-center 자료가 없습니다.

@@ -1,4 +1,8 @@
 %section.py-5
   .container
     .py-2
-      = render @candidate.awards
+      - if @candidate.awards.any?
+        = render @candidate.awards
+      - else
+        .border.p-4
+          .text-muted.text-center 자료가 없습니다.
