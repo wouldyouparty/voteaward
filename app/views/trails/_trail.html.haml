@@ -54,9 +54,9 @@
     = simple_format(trail.body)
 
   - if trail.url.present?
-    .my-2
+    .my-2.text-truncate
       %span.text-muted 출처
-      %span.overflow-hidden
+      %span
         = link_to trail.url, trail.url, target: "_blank"
 
   .mt-4
