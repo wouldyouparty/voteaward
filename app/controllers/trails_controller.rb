@@ -1,5 +1,5 @@
 class TrailsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:vote]
 
   def index
     @trails = Trail.all
