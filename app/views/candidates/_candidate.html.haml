@@ -1,29 +1,33 @@
-.col-6.col-md-4.col-xl-3.mb-4
+.col-12.col-md-6.col-lg-4.mb-3
   .card[candidate]
-    = link_to candidate do
-      = image_tag candidate.thumb, class: 'card-img-top'
-    .card-body
-      %h5.card-title
-        %strong= candidate.name
-        %br
-        %small= candidate.party.name
-      - if @district.nil?
-        = candidate.district.province.name
-        = candidate.district.name
-    .card-footer
-      .d-flex.justify-content-between
-        %span.mr-1.text-primary
-          %i.far.fa-comment-alt-exclamation
-            = number_with_delimiter(candidate.trails.count)
+    .row.no-gutters
+      .col-4
+        = link_to candidate do
+          = image_tag candidate.thumb, class: 'card-img-top'
+      .col-8
+        .p-3
+          %h5
+            %strong= candidate.name
+            %small= candidate.party.name
 
-        %span.mr-1.text-success
-          %i.far.fa-smile
-          = number_with_delimiter(candidate.likes_count)
+          .text-muted
+            %i.fa.fa-map-marker
+            = candidate.district.province.name
+            = candidate.district.name
 
-        %span.mr-1.text-danger
-          %i.far.fa-angry
-          = number_with_delimiter(candidate.dislikes_count)
+          .d-flex.justify-content-between.mt-3
+            %span.text-primary
+              %i.far.fa-comment-alt-exclamation
+                = number_with_delimiter(candidate.trails.count)
 
-        %span.text-primary
-          %i.far.fa-crown
-            = number_with_delimiter(candidate.awards.count)
+            %span.text-primary
+              %i.far.fa-crown
+                = number_with_delimiter(candidate.awards.count)
+
+            %span.text-success
+              %i.far.fa-smile
+              = number_with_delimiter(candidate.likes_count)
+
+            %span.text-danger
+              %i.far.fa-angry
+              = number_with_delimiter(candidate.dislikes_count)
