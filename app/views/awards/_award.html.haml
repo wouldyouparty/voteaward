@@ -12,13 +12,14 @@
 
       .row.no-gutters
         - award.candidates.each do |candidate|
-          .col-6.col-md-4.col-lg-3.mb-1
-            .d-flex.justify-content-start.align-items-center.bg-light
-              = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:63px;height:75px"
-              .text-muted
-                .mb-1
-                  %strong= link_to candidate.name, candidate, class: "stretched-link"
-                  %span= candidate.party.name
+          .col-6.col-sm-4.col-lg-3.mb-1
+            .d-flex.justify-content-start.bg-light
+              = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:66px;height:80px"
+              .py-1.text-muted
+                %strong= link_to candidate.name, candidate, class: "stretched-link"
                 %div
-                  %i.fa.fa-map-marker
-                  = candidate.district.name
+                  %small= candidate.party.name
+                %div
+                  %small
+                    %i.fa.fa-map-marker
+                    = candidate.district.name
