@@ -14,7 +14,7 @@ class TrailsController < ApplicationController
       @candidates = Candidate.search_for(params[:name])
     end
 
-    @trails = @candidates.any? ? Trail.where(candidate: @candidates) : Trail.all
+    @trails = @candidates.nil? ? Trail.all : Trail.where(candidate: @candidates)
   end
 
   def create
