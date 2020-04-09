@@ -23,6 +23,11 @@ ko:
         candidates: 대상후보
 
   site_name: 투표대잔치 2020
+  title:
+    trail: 박제해드립니다
+    trail_sub: 주옥같은 발언, 잊지못할 순간 박제해드립니다
+    award: 별별 어워드
+    award_sub: 우리가 기억하고 싶은 후보들
   link:
     edit: 수정
     destroy: 삭제
