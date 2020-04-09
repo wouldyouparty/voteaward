@@ -2,7 +2,19 @@ class TrailsController < ApplicationController
   load_and_authorize_resource except: [:vote]
 
   def index
-    @trails = Trail.all
+    if params[:did].present?
+      @district = District.find(params[:did])
+      @province = @district.province
+      @candidates = @district.candidates
+    elsif params[:pid].present?
+      @province = Province.find(params[:pid])
+      @district = @province.districts.first
+      @candidates = @district.candidates
+    elsif params[:name].present?
+      @candidates = Candidate.search_for(params[:name])
+    end
+
+    @trails = @candidates.any? ? Trail.where(candidate: @candidates) : Trail.all
   end
 
   def create

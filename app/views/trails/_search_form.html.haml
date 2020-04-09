@@ -1,0 +1,23 @@
+.border.p-4
+  = form_with url: trails_path, method: :get, local: true do |f|
+    .mb-3
+      %h6 시도
+      .form-group
+        = f.select :pid, Province.all.collect{ |p| [p.name, p.id]}, { include_blank: true, selected: @province&.id }, { onchange: "this.form.submit()", class: "form-control" }
+
+  - if @province.present?
+    = form_with url: trails_path, method: :get, local: true do |f|
+      .my-3
+        %h6 선거구
+        .form-group
+          = f.select :did, @province.districts.collect{ |d| [d.name, d.id]}, { include_blank: true, selected: @district&.id }, { onchange: "this.form.submit()", class: "form-control" }
+
+  %hr
+
+  = form_with url: trails_path, method: :get, local: true do |f|
+    .my-3
+      %h6 후보명으로 검색해보세요.
+      .form-group
+        = f.text_field :name, value: params[:name], class: "form-control"
+      .form-group
+        = f.submit "검색", class: "btn btn-outline-primary"

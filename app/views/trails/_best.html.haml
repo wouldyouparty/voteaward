@@ -1,0 +1,18 @@
+.border.p-4
+  .row
+    .col-12.col-md-6
+      %h6.mt-0.font-weight-bold 좋아요 베스트
+      %ul.list-unstyled
+        - Trail.unscoped.order("likes_count desc").limit(5).each do |trail|
+          %li
+            = link_to trails_path(did: trail.candidate.district, anchor: "trail_#{trail.id}"), class: "text-dark" do
+              %strong= trail.candidate.name
+              = truncate(trail.body, length: 60)
+    .col-12.col-md-6
+      %h6.mt-0.font-weight-bold 화나요 베스트
+      %ul.list-unstyled
+        - Trail.unscoped.order("likes_count desc").limit(5).each do |trail|
+          %li
+            = link_to trails_path(did: trail.candidate.district, anchor: "trail_#{trail.id}"), class: "text-dark" do
+              %strong= trail.candidate.name
+              = truncate(trail.body, length: 60)
