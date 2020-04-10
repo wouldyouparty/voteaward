@@ -1,7 +1,7 @@
 .trail-card.border.bg-white.mb-3.p-3[trail]
   .mb-2
     .d-flex.justify-content-between
-      .user.text-muted
+      %small.user.text-muted
         %span.font-weight-bold= trail.user.name
         = l trail.created_at.to_date
         - if can? :manage, trail
@@ -30,23 +30,24 @@
                     = f.submit "저장", class: "btn btn-primary", data: { "disable-with": "저장중..." }
 
       %div
-        - if trail.verfied?
-          %span.text-success
-            %i.fa.fa-check
-            검증완료
-        - else
-          %span.text-danger
-            %i.fa.fa-search
-            검증중
+        %small
+          - if trail.verfied?
+            %span.text-success
+              %i.fa.fa-check
+              검증완료
+          - else
+            %span.text-danger
+              %i.fa.fa-search
+              검증중
   .my-2
     - if local_assigns[:show_candidate]
       %h5
         %span.font-weight-bold
           = link_to trail.candidate.name, trail.candidate
         %small
-          = link_to trail.candidate.party.name, candidates_path(party_id: trail.candidate.party)
+          = link_to trail.candidate.party.name, candidates_path(party_id: trail.candidate.party), class: "text-dark"
         %small
-          = link_to candidates_path(did: trail.candidate.district) do
+          = link_to candidates_path(did: trail.candidate.district), class: "text-dark" do
             %i.fa.fa-map-marker
             = trail.candidate.district.province.name
             = trail.candidate.district.name
@@ -57,7 +58,7 @@
     .my-2.text-truncate
       %span.text-muted 출처
       %span
-        = link_to trail.url, trail.url, target: "_blank"
+        = link_to trail.url, trail.url, target: "_blank", class: "text-dark"
 
   .mt-4
     .d-flex.justify-content-start
