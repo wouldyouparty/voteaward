@@ -49,5 +49,9 @@
         %th 전과기록유무(건수)
         %td #{@candidate.crime}회
       %tr
+        %th 전과기록
+        %td
+          = raw JSON.parse(@candidate.crime_records || "[\"해당없음\"]").join("<br>")
+      %tr
         %th.text-nowrap 입후보횟수
         %td #{@candidate.candidate_count}회

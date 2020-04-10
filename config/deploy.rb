@@ -50,6 +50,13 @@ namespace :deploy do
     end
   end
 
+  desc 'db seed'
+  task :db_seed do
+    on roles(:web) do
+      execute "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} #{fetch(:rbenv_prefix)} bundle exec rake db:seed"
+    end
+  end
+
   desc 'db migrate'
   task :db_migrate do
     on roles(:web) do
