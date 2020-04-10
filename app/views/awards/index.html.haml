@@ -9,7 +9,10 @@
 
 
     %section
-      = render "candidates/search_form"
+      .border.p-4
+        .my-3
+          %h6 어워드 목록
+          = select_tag "award", options_for_select(Award.unscoped.order("title asc").map{|a| [a.title, award_path(a)]}), {include_blank: true, class: "form-control", onchange:"document.location.href=this.value"}
 
     .my-3
       = render @awards
