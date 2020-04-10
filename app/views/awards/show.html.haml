@@ -16,20 +16,21 @@
       = simple_format @award.body
 
     .my-3
-      %h6
-        %strong 대상후보
-        #{@award.candidates.count}명
+      .border.p-4
+        %h6
+          %strong 대상후보
+          #{@award.candidates.count}명
 
-      .row
-        - @award.candidates.each do |candidate|
-          .col-6.col-sm-4.col-lg-3.mb-1
-            .d-flex.justify-content-start.bg-light
-              = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:66px;height:80px"
-              .py-1.text-muted
-                %strong= link_to candidate.name, candidate, class: "stretched-link"
-                %div
-                  %small= candidate.party.name
-                %div
-                  %small
-                    %i.fa.fa-map-marker
-                    = candidate.district.name
+        .row
+          - @award.candidates.each do |candidate|
+            .col-6.col-sm-4.col-lg-3.mb-1
+              .d-flex.justify-content-start.bg-light
+                = image_tag candidate.thumb, class: 'card-img mr-2', style: "width:66px;height:80px"
+                .py-1.text-muted
+                  %strong= link_to candidate.name, candidate, class: "stretched-link"
+                  %div
+                    %small= candidate.party.name
+                  %div
+                    %small
+                      %i.fa.fa-map-marker
+                      = candidate.district.name
