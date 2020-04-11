@@ -9,6 +9,10 @@
               %i.fa.fa-external-link
               선거관리위원회 후보정보공개
       %tr
+        %th.text-nowrap 정책 공약
+        %td
+          = link_to '정책 공약집 내려받기', @candidate.manifesto || '#'
+      %tr
         %th.text-nowrap 한문
         %td= @candidate.cname
       %tr

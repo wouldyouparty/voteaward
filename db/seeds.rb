@@ -1,7 +1,7 @@
 require 'csv'
 
 count = 1
-headers = %w(name district party gid thumb picture no cname gender birthday age address job education career property military tax tax_unpaid_5yrs tax_unpaid_current crime crime_records candidate_count)
+headers = %w(name district party gid thumb picture no cname gender birthday age address job education career property military tax tax_unpaid_5yrs tax_unpaid_current crime crime_records candidate_count manifesto)
 
 CSV.foreach('db/candidates.csv', headers: true) do |c|
   p "#{count}, #{c['name']}"

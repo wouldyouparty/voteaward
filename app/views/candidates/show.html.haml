@@ -13,6 +13,9 @@
             %i.fa.fa-map-marker
             = @candidate.district.province.name
             = @candidate.district.name
+          = link_to @candidate.manifesto || '#' do
+            %i.fa.fa-book
+            공약
 
         .my-3
           = link_to candidate_path(@candidate), class: "btn btn-lg btn-danger text-white mr-2" do
