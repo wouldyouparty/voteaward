@@ -6,7 +6,7 @@ class Candidate < ApplicationRecord
 
   scoped_search on: [:name]
 
-  default_scope { order("no asc") }
+  default_scope { where(elected: true).order("no asc") }
 
   def likes_count
     trails.sum(:likes_count)

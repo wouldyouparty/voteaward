@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_104725) do
+ActiveRecord::Schema.define(version: 2020_05_14_101023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_104725) do
     t.integer "awards_count", default: 0
     t.text "crime_records"
     t.string "manifesto"
+    t.boolean "elected", default: false
     t.index ["district_id"], name: "index_candidates_on_district_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
   end
