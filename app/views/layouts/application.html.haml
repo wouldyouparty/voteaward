@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
-    %title 투표대잔치 2020
+    %title 우주당 2020
     = csrf_meta_tags
     = csp_meta_tag
     = render "google_analytics"
@@ -18,15 +18,9 @@
         %section.jumbotron.bg-primary.text-white.rounded-0.m-0.vh-75
           .container
             .py-5.text-center
-              = image_tag "logo.png"
+              = image_tag "wyp_logo.png"
               %h2.mt-4
-                %span.font-weight-bold 투표대잔치
-                %span.font-weight-light 2020
-              %p.p-2.lead 21대 국회의원과 함께 합니다
 
-              %p
-                = link_to t('title.trail'), trails_path, class: "btn btn-danger mx-2 mb-2"
-                = link_to t('title.award'), awards_path, class: "btn btn-success mx-2 mb-2"
 
       = yield
     = render "modals"
