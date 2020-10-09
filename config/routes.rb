@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     post :vote, on: :member
   end
   resources :awards
-  root 'candidates#index'
+  root 'homepage#index'
 end

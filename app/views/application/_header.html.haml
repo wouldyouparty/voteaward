@@ -5,12 +5,28 @@
 
     .navbar-collapse.offcanvas-collapse
       %ul.navbar-nav
+        %li.nav-item.mt-4
+          %h6.text-light.my-2.font-weight-bold
+            커뮤니티
+        %li.nav-item
+          = link_to '우주당 카누', 'https://wouldyou.parti.xyz', target: '_blank', class: 'nav-link text-white'
 
         %li.nav-item.mt-4
-          %small.text-light
-            %i.far.fa-users
-        %li.nav-item= link_to '후보 검색', candidates_path, class: 'nav-link text-white'
-        %li.nav-item= link_to t('title.trail'), trails_path, class: 'nav-link text-white'
+          %h6.text-light.my-2.font-weight-bold
+            월간 우주당 2020-4
+        %li.nav-item
+          .text-white
+            준비 중입니다
+
+        %li.nav-item.mt-4
+          %h6.text-light.my-2.font-weight-bold
+            21대 국회
+        %li.nav-item
+          = link_to '후보 검색', candidates_path, class: 'nav-link text-white'
+        %li.nav-item
+          = link_to t('title.trail'), trails_path, class: 'nav-link text-white'
+        %li.nav-item
+          = link_to t('title.award'), '#', class: 'nav-link text-white'
 
         %li.nav-item.mt-4
           %small.text-light

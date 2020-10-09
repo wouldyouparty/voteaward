@@ -4,6 +4,8 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
+    %meta{:content => "시민이 주인이 되어 일상 속 시민 정치를 실험하는 프로젝트 정당 우주당입니다.", :name => "description"}
+    %meta{:content => "시민, 민주주의, 시민주권, 프로젝트 정당, 일상 정치, wouldyouparty, democracy, citizen rights, citizen soverignity, everyday politics", :name => "keywords"}
     %title 우주당 2020
     = csrf_meta_tags
     = csp_meta_tag
@@ -13,14 +15,8 @@
     %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/d1995cff7d.js"}
   %body
     = render "header"
+
     %main
-      - if current_page? root_url
-        %section.jumbotron.bg-primary.text-white.rounded-0.m-0.vh-75
-          .container
-            .py-5.text-center
-              = image_tag "wyp_logo.png"
-              %h2.mt-4
-
-
       = yield
+
     = render "modals"
