@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 gem 'mini_magick', '~> 4.8'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
